@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Movie
+comment0.text=\r\n\ Escreva\ a\ descri\u00E7\u00E3o\ da\ classe\ Movie\ aqui.\r\n\ \r\n\ @author\ (seu\ nome)\ \r\n\ @version\ (n\u00FAmero\ de\ vers\u00E3o\ ou\ data)\r\n
+comment1.params=theTitle\ theDirector\ time\ boxOffice
+comment1.target=Movie(java.lang.String,\ java.lang.String,\ int,\ double)
+comment1.text=\r\n\ COnstrutor\ para\ objetos\ da\ classe\ Movie\r\n
+comment2.params=
+comment2.target=double\ getBoxOffice()
+comment2.text=\r\n\ Exemplo\ de\ m\u00E9todo\ -\ substitua\ este\ coment\u00E1rio\ pelo\ seu\ pr\u00F3prio\r\n\ \r\n\ @param\ \ y\ \ \ exemplo\ de\ um\ par\u00E2metro\ de\ m\u00E9todo\r\n\ @return\ \ \ \ \ a\ soma\ de\ x\ com\ y\ \r\n
+comment3.params=
+comment3.target=java.lang.String\ toString()
+numComments=4
