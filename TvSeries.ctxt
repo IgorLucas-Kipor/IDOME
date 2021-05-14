@@ -1,12 +1,13 @@
 #BlueJ class context
 comment0.target=TvSeries
-comment0.text=\r\n\ Escreva\ a\ descri\u00E7\u00E3o\ da\ classe\ TvSeries\ aqui.\r\n\ \r\n\ @author\ (seu\ nome)\ \r\n\ @version\ (n\u00FAmero\ de\ vers\u00E3o\ ou\ data)\r\n
+comment0.text=\r\n\ This\ class\ creates\ a\ tv\ series\ file.\ Information\ about\ said\ item\ can\r\n\ be\ stored\ and\ retrieve.\r\n\ \r\n\ @author\ Igor\ Lucas\ and\ Guilherme\ Matos.\r\n\ @version\ 0.8\r\n
 comment1.params=theTitle\ theDirector\ time\ seasons
 comment1.target=TvSeries(java.lang.String,\ java.lang.String,\ int,\ int)
-comment1.text=\r\n\ COnstrutor\ para\ objetos\ da\ classe\ TvSeries\r\n
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ tv\ series.\r\n\ @param\ theTitle\ The\ title\ of\ this\ tv\ series.\r\n\ @param\ theDirector\ The\ director\ of\ this\ tv\ series.\r\n\ @param\ time\ The\ running\ time\ of\ this\ tv\ series.\r\n\ @param\ seasons\ The\ number\ of\ seasons\ this\ tv\ series\ has.\r\n
 comment2.params=
 comment2.target=int\ getNumberOfSeasons()
-comment2.text=\r\n\ Exemplo\ de\ m\u00E9todo\ -\ substitua\ este\ coment\u00E1rio\ pelo\ seu\ pr\u00F3prio\r\n\ \r\n\ @param\ \ y\ \ \ exemplo\ de\ um\ par\u00E2metro\ de\ m\u00E9todo\r\n\ @return\ \ \ \ \ a\ soma\ de\ x\ com\ y\ \r\n
+comment2.text=\r\n\ @return\ the\ number\ of\ seasons\ this\ tv\ series\ has.\r\n
 comment3.params=
 comment3.target=java.lang.String\ toString()
+comment3.text=\r\n\ @return\ details\ of\ this\ tv\ series.\r\n
 numComments=4

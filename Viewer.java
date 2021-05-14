@@ -6,10 +6,11 @@ import java.io.*;
 import java.util.*;
 
 /**
- * Escreva a descrição da classe Viewer aqui.
+ * The class viewer create a GUI that allows the user to access a database
+ * in a interactive way through the use of buttons.
  * 
- * @author (seu nome) 
- * @version (número de versão ou data)
+ * @author Igor Lucas and Guilherme Matos.
+ * @version 0.8
  */
 public class Viewer
 {
@@ -20,8 +21,10 @@ public class Viewer
     private JTextArea outputArea;
     private JTextArea inputArea;
 
+    //---------------------------------Main Methods---------------------------
+    
     /**
-     * Create an ImageViewer show it on screen.
+     * Create an Viewer with an instance of database and shows it on screen.
      */
     public Viewer()
     {
@@ -47,6 +50,10 @@ public class Viewer
         frame.setVisible(true);
     }
 
+    /**
+     * Create the panel used in content pane of the frame.
+     * @return the panel to be used.
+     */
     private JPanel createPanel() {
 
         //criando painel
@@ -189,26 +196,46 @@ public class Viewer
 
         return panel;
     }
+    
+    //--------------------------------Action Event Methods--------------------
 
+    /**
+     * Lists all itens in the database list in the output area.
+     */
     private void list() {
         String text = database.list();
         outputArea.setText(text);
     }
 
+    /**
+     * Adds a item to the database based on the informations in the input area,
+     * then informs if succesful or not.
+     */
     private void addItem() {
         String text = inputArea.getText();
         String fields[] = text.split(",");
         if (fields[0].toLowerCase().equals("movie")) {
             addMovie(fields);
+            outputArea.append("Movie " + fields[1] + " added to the database."
+                + System.lineSeparator());
         } else if (fields[0].toLowerCase().equals("tvseries")) {
             addTvSeries(fields);
+            outputArea.append("Tv Series " + fields[1] + " added to the database."
+                + System.lineSeparator());
         } else if (fields[0].toLowerCase().equals("audiomedia")) {
             addAudioMedia(fields);
+            outputArea.append("Audio Media " + fields[1] + " added to the database."
+                + System.lineSeparator());
         } else {
             outputArea.setText("Invalid item, please try again.");   
         }
     }
 
+    /**
+     * Adds items to the database based on a file imported to the application,
+     * then prints a message for each successful item, a message for each
+     * repeated item and a error message if the IO fails.
+     */
     private void importFile() {
         String path = inputArea.getText();
         outputArea.setText(null);
@@ -233,6 +260,11 @@ public class Viewer
 
     }
 
+    /**
+     * Saves a file containing the current list on the database, informing the
+     * date in which it was created, in a destination set by the user. Prints
+     * a error message if the IO is unsuccessful.
+     */
     private void saveFile() {
         String path = inputArea.getText();
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
@@ -251,6 +283,11 @@ public class Viewer
         }
     }
 
+    /**
+     * Sets a comment into a item on the database, using the item's title to
+     * find it. Prints a message confirming success or informing if the item
+     * is not in the database.
+     */
     private void addComment() {
         String text = inputArea.getText();
         String fields[] = text.split(",");
@@ -268,6 +305,11 @@ public class Viewer
         }
     }
 
+    /**
+     * Removes a item from the database, using it's name to find the item.
+     * Prints a message confirming success or informing if the item could not
+     * be found.
+     */
     private void removeItem() {
         String toRemove = inputArea.getText();
         Boolean itemRemoved = false;
@@ -284,6 +326,12 @@ public class Viewer
         }
     }
 
+    //-------------------------------Support Methods-------------------------
+
+    /**
+     * Adds a movie to the database.
+     * @params fields[] An array with the information to be added to the movie.
+     */
     private void addMovie(String fields[]) {
 
         StringBuilder repeatedTitles = new StringBuilder();
@@ -299,6 +347,11 @@ public class Viewer
         }
     }
 
+    /**
+     * Adds a tv series to the database.
+     * @params fields[] An array with the information to be added to the
+     * tv series.
+     */
     private void addTvSeries(String fields[]) {
         StringBuilder repeatedTitles = new StringBuilder();
 
@@ -313,6 +366,31 @@ public class Viewer
         }
     }
 
+    /**
+     * Adds a audio media to the database.
+     * @params fields[] An array with the information to be added to the
+     * audio media.
+     */
+    private void addAudioMedia(String fields[]) {
+        StringBuilder repeatedTitles = new StringBuilder();
+
+        Boolean titleExists = verifyTitle(fields, repeatedTitles);
+        if (titleExists == false) {
+            AudioMedia item = new AudioMedia(fields[1], fields[3],
+                    Integer.parseInt(fields[2]), Integer.parseInt(fields[4]));
+            database.addItem(item);
+        } else {
+            outputArea.append(repeatedTitles.toString());
+        }
+    }
+
+    /**
+     * Checks if a identical title already exists in the database
+     * @params fields[] The information of the item trying to be added.
+     * @params titles A StringBuilder building the string of repeated itens to
+     * be printed in the output area.
+     * @return true if there is a repeated title.
+     */
     private Boolean verifyTitle(String fields[], StringBuilder titles) {
         Boolean titleExists = false;
         titles.append(System.lineSeparator());
@@ -325,19 +403,6 @@ public class Viewer
         titles.append("already exists.")
         .append(System.lineSeparator());
         return titleExists;
-    }
-
-    private void addAudioMedia(String fields[]) {
-        StringBuilder repeatedTitles = new StringBuilder();
-
-        Boolean titleExists = verifyTitle(fields, repeatedTitles);
-        if (titleExists == false) {
-            AudioMedia item = new AudioMedia(fields[1], fields[3],
-                    Integer.parseInt(fields[2]), Integer.parseInt(fields[4]));
-            database.addItem(item);
-        } else {
-            outputArea.append(repeatedTitles.toString());
-        }
     }
 
 }

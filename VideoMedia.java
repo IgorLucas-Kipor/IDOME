@@ -1,19 +1,18 @@
 /**
- * The DVD class represents a DVD object. Information about the 
- * DVD is stored and can be retrieved. We assume that we only deal 
- * with movie DVDs at this stage.
+ * This class serves as base for all video media files. No items of this class
+ * can be instantiated since it's an abstract class.
  * 
- * @author Michael Kolling and David J. Barnes
- * @version 2008.03.30
+ * @author Igor Lucas and Guilherme Matos.
+ * @version 0.8
  */
 public abstract class VideoMedia extends Item 
 {
     private String director;
 
     /**
-     * Constructor for objects of class DVD
-     * @param theTitle The title of this DVD.
-     * @param theDirector The director of this DVD.
+     * Constructor for objects of class Video Media.
+     * @param theTitle The title of this Video Media.
+     * @param theDirector The director of this Video Media.
      * @param time The running time of the main feature.
      */
     public VideoMedia(String theTitle, String theDirector, int time)
@@ -23,7 +22,7 @@ public abstract class VideoMedia extends Item
     }
 
     /**
-     * @return The director for this DVD.
+     * @return The director for this Video Media.
      */
     public String getDirector()
     {
@@ -31,7 +30,7 @@ public abstract class VideoMedia extends Item
     }
 
     /**
-     * Print details of this DVD to the text terminal.
+     * @return details of this Video Media.
      */
     public String toString()
     {

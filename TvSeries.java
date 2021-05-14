@@ -1,9 +1,9 @@
-
 /**
- * Escreva a descrição da classe TvSeries aqui.
+ * This class creates a tv series file. Information about said item can
+ * be stored and retrieve.
  * 
- * @author (seu nome) 
- * @version (número de versão ou data)
+ * @author Igor Lucas and Guilherme Matos.
+ * @version 0.8
  */
 public class TvSeries extends VideoMedia
 {
@@ -11,7 +11,11 @@ public class TvSeries extends VideoMedia
     private int numberOfSeasons;
 
     /**
-     * COnstrutor para objetos da classe TvSeries
+     * Constructor for objects of class tv series.
+     * @param theTitle The title of this tv series.
+     * @param theDirector The director of this tv series.
+     * @param time The running time of this tv series.
+     * @param seasons The number of seasons this tv series has.
      */
     public TvSeries(String theTitle, String theDirector, int time, int seasons)
     {
@@ -20,32 +24,32 @@ public class TvSeries extends VideoMedia
     }
 
     /**
-     * Exemplo de método - substitua este comentário pelo seu próprio
-     * 
-     * @param  y   exemplo de um parâmetro de método
-     * @return     a soma de x com y 
+     * @return the number of seasons this tv series has.
      */
     public int getNumberOfSeasons()
     {
         return numberOfSeasons;
     }
-    
+
+    /**
+     * @return details of this tv series.
+     */
     public String toString() {
-    boolean aux = getComment() != null;
-    StringBuilder message = new StringBuilder();
-    message.append(super.toString())
-    .append(System.lineSeparator())
-    .append("Number of seasons: ")
-    .append(numberOfSeasons)
-    .append(System.lineSeparator())
-    .append(System.lineSeparator())
-    .append("Comment: ");
-    if (aux) {
-        message.append(getComment());
-    } else {
-        message.append("<no comment>");
-    }
-    message.append(System.lineSeparator());
-    return message.toString();
+        boolean aux = getComment() != null;
+        StringBuilder message = new StringBuilder();
+        message.append(super.toString())
+        .append(System.lineSeparator())
+        .append("Number of seasons: ")
+        .append(numberOfSeasons)
+        .append(System.lineSeparator())
+        .append(System.lineSeparator())
+        .append("Comment: ");
+        if (aux) {
+            message.append(getComment());
+        } else {
+            message.append("<no comment>");
+        }
+        message.append(System.lineSeparator());
+        return message.toString();
     }
 }

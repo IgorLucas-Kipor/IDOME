@@ -1,17 +1,19 @@
 #BlueJ class context
 comment0.target=Database
-comment0.text=\r\n\ The\ database\ class\ provides\ a\ facility\ to\ store\ CD\ and\ video\ \r\n\ objects.\ A\ list\ of\ all\ CDs\ and\ videos\ can\ be\ printed\ to\ the\r\n\ terminal.\r\n\ \r\n\ This\ version\ does\ not\ save\ the\ data\ to\ disk,\ and\ it\ does\ not\r\n\ provide\ any\ search\ functions.\r\n\ \r\n\ @author\ Michael\ Kolling\ and\ David\ J.\ Barnes\r\n\ @version\ 2008.03.30\r\n
+comment0.text=\r\n\ The\ database\ class\ provides\ a\ facility\ to\ store\ audio\ and\ media\ files.\r\n\ The\ details\ of\ these\ files\ can\ be\ collected\ and\ printed\ in\ a\ interface\ or\r\n\ terminal,\ as\ the\ user\ desires.\r\n\ \r\n\ \r\n\ @author\ Igor\ Lucas\ and\ Guilherme\ Matos.\r\n\ @version\ 0.8\r\n
 comment1.params=
 comment1.target=Database()
 comment1.text=\r\n\ Construct\ an\ empty\ Database.\r\n
 comment2.params=
 comment2.target=java.util.ArrayList\ getItems()
+comment2.text=\r\n\ @return\ the\ list\ of\ added\ items.\r\n
 comment3.params=theItem
 comment3.target=void\ addItem(Item)
 comment3.text=\r\n\ Add\ an\ item\ to\ the\ database.\r\n\ @param\ theItem\ The\ item\ to\ be\ added.\r\n
-comment4.params=
-comment4.target=java.lang.String\ list()
-comment4.text=\r\n\ Print\ a\ list\ of\ all\ currently\ stored\ CDs\ and\ videos\ to\ the\r\n\ text\ terminal.\r\n
-comment5.params=theItem
-comment5.target=void\ removeItem(Item)
+comment4.params=theItem
+comment4.target=void\ removeItem(Item)
+comment4.text=\r\n\ Removes\ a\ item\ from\ the\ database.\r\n\ @params\ theItem\ The\ item\ to\ be\ removed.\r\n
+comment5.params=
+comment5.target=java.lang.String\ list()
+comment5.text=\r\n\ @return\ a\ list\ of\ all\ added\ items\ in\ string\ format.\r\n
 numComments=6

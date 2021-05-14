@@ -1,16 +1,16 @@
 #BlueJ class context
 comment0.target=AudioMedia
-comment0.text=\r\n\ The\ CD\ class\ represents\ a\ CD\ object.\ Information\ about\ the\ \r\n\ CD\ is\ stored\ and\ can\ be\ retrieved.\r\n\ \r\n\ @author\ Michael\ Kolling\ and\ David\ J.\ Barnes\r\n\ @version\ 2008.03.30\r\n
+comment0.text=\r\n\ This\ class\ creates\ a\ audio\ media\ file.\ Information\ about\ said\ item\ can\r\n\ be\ stored\ and\ retrieve.\r\n\ \r\n\ @author\ Igor\ Lucas\ and\ Guilherme\ Matos.\r\n\ @version\ 0.8\r\n
 comment1.params=theTitle\ theArtist\ time\ tracks
 comment1.target=AudioMedia(java.lang.String,\ java.lang.String,\ int,\ int)
-comment1.text=\r\n\ Initialize\ the\ CD.\r\n\ @param\ theTitle\ The\ title\ of\ the\ CD.\r\n\ @param\ theArtist\ The\ artist\ of\ the\ CD.\r\n\ @param\ tracks\ The\ number\ of\ tracks\ on\ the\ CD.\r\n\ @param\ time\ The\ playing\ time\ of\ the\ CD.\r\n
+comment1.text=\r\n\ Initialize\ the\ Audio\ Media.\r\n\ @param\ theTitle\ The\ title\ of\ the\ Audio\ Media.\r\n\ @param\ theArtist\ The\ artist\ of\ the\ Audio\ Media.\r\n\ @param\ tracks\ The\ number\ of\ tracks\ on\ the\ Audio\ Media.\r\n\ @param\ time\ The\ playing\ time\ of\ the\ Audio\ Media.\r\n
 comment2.params=
 comment2.target=java.lang.String\ getArtist()
-comment2.text=\r\n\ @return\ The\ artist\ for\ this\ CD.\r\n
+comment2.text=\r\n\ @return\ The\ artist\ for\ this\ Audio\ Media.\r\n
 comment3.params=
 comment3.target=int\ getNumberOfTracks()
-comment3.text=\r\n\ @return\ The\ number\ of\ tracks\ on\ this\ CD.\r\n
+comment3.text=\r\n\ @return\ The\ number\ of\ tracks\ on\ this\ Audio\ Media.\r\n
 comment4.params=
 comment4.target=java.lang.String\ toString()
-comment4.text=\r\n\ Print\ details\ of\ this\ CD\ to\ the\ text\ terminal.\r\n
+comment4.text=\r\n\ @return\ a\ string\ with\ details\ of\ this\ Audio\ Media.\r\n
 numComments=5

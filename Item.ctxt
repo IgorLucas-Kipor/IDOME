@@ -1,18 +1,19 @@
 #BlueJ class context
 comment0.target=Item
-comment0.text=\r\n\ The\ Item\ class\ represents\ a\ multi-media\ item.\r\n\ Information\ about\ the\ item\ is\ stored\ and\ can\ be\ retrieved.\r\n\ This\ class\ serves\ as\ a\ superclass\ for\ more\ specific\ itms.\r\n\ \r\n\ @author\ Michael\ Kolling\ and\ David\ J.\ Barnes\r\n\ @version\ 2008.03.30\r\n
+comment0.text=\r\n\ This\ class\ serves\ as\ base\ for\ all\ items.\ No\ items\ of\ this\ class\r\n\ can\ be\ instantiated\ since\ it's\ an\ abstract\ class.\r\n\ \r\n\ @author\ Igor\ Lucas\ and\ Guilherme\ Matos.\r\n\ @version\ 0.8\r\n
 comment1.params=theTitle\ time
 comment1.target=Item(java.lang.String,\ int)
 comment1.text=\r\n\ Initialise\ the\ fields\ of\ the\ item.\r\n\ @param\ theTitle\ The\ title\ of\ this\ item.\r\n\ @param\ time\ The\ running\ time\ of\ this\ item.\r\n
 comment2.params=
 comment2.target=java.lang.String\ getTitle()
+comment2.text=\r\n\ @return\ the\ item\ title.\r\n
 comment3.params=comment
 comment3.target=void\ setComment(java.lang.String)
-comment3.text=\r\n\ Enter\ a\ comment\ for\ this\ item.\r\n\ @param\ comment\ The\ comment\ to\ be\ entered.\r\n
+comment3.text=\r\n\ Set's\ a\ comment\ for\ this\ item.\r\n\ @param\ comment\ The\ comment\ to\ be\ entered.\r\n
 comment4.params=
 comment4.target=java.lang.String\ getComment()
 comment4.text=\r\n\ @return\ The\ comment\ for\ this\ item.\r\n
 comment5.params=
 comment5.target=java.lang.String\ toString()
-comment5.text=\r\n\ Print\ details\ of\ this\ item\ to\ the\ text\ terminal.\r\n
+comment5.text=\r\n\ @return\ details\ of\ this\ item.\r\n
 numComments=6

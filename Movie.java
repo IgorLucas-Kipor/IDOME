@@ -1,9 +1,9 @@
-
 /**
- * Escreva a descrição da classe Movie aqui.
+ * This class creates a movie file. Information about said item can
+ * be stored and retrieve.
  * 
- * @author (seu nome) 
- * @version (número de versão ou data)
+ * @author Igor Lucas and Guilherme Matos.
+ * @version 0.8
  */
 public class Movie extends VideoMedia
 {
@@ -11,7 +11,11 @@ public class Movie extends VideoMedia
     private double boxOffice;
 
     /**
-     * COnstrutor para objetos da classe Movie
+     * Constructor for objects of class movie.
+     * @param theTitle The title of this movie.
+     * @param theDirector The director of this movie.
+     * @param time The running time of this movie.
+     * @param boxOffice The amount of money this movie made in box office.
      */
     public Movie(String theTitle, String theDirector, int time, double boxOffice)
     {
@@ -20,32 +24,32 @@ public class Movie extends VideoMedia
     }
 
     /**
-     * Exemplo de método - substitua este comentário pelo seu próprio
-     * 
-     * @param  y   exemplo de um parâmetro de método
-     * @return     a soma de x com y 
+     * @return the movie's amount made in box office.
      */
     public double getBoxOffice()
     {
         return boxOffice;
     }
-    
-        public String toString() {
-    boolean aux = getComment() != null;
-    StringBuilder message = new StringBuilder();
-    message.append(super.toString())
-    .append(System.lineSeparator())
-    .append("Box Office: ")
-    .append(boxOffice)
-    .append(System.lineSeparator())
-    .append(System.lineSeparator())
-    .append("Comment: ");
-    if (aux) {
-        message.append(getComment());
-    } else {
-        message.append("<no comment>");
-    }
-    message.append(System.lineSeparator());
-    return message.toString();
+
+    /**
+     * @return details of this movie.
+     */
+    public String toString() {
+        boolean aux = getComment() != null;
+        StringBuilder message = new StringBuilder();
+        message.append(super.toString())
+        .append(System.lineSeparator())
+        .append("Box Office: ")
+        .append(boxOffice)
+        .append(System.lineSeparator())
+        .append(System.lineSeparator())
+        .append("Comment: ");
+        if (aux) {
+            message.append(getComment());
+        } else {
+            message.append("<no comment>");
+        }
+        message.append(System.lineSeparator());
+        return message.toString();
     }
 }

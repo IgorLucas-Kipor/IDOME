@@ -1,10 +1,9 @@
 /**
- * The Item class represents a multi-media item.
- * Information about the item is stored and can be retrieved.
- * This class serves as a superclass for more specific itms.
+ * This class serves as base for all items. No items of this class
+ * can be instantiated since it's an abstract class.
  * 
- * @author Michael Kolling and David J. Barnes
- * @version 2008.03.30
+ * @author Igor Lucas and Guilherme Matos.
+ * @version 0.8
  */
 public abstract class Item
 {
@@ -23,13 +22,16 @@ public abstract class Item
         playingTime = time;
         comment = null;
     }
-    
+
+    /**
+     * @return the item title.
+     */
     public String getTitle() {
         return title;   
     }
 
     /**
-     * Enter a comment for this item.
+     * Set's a comment for this item.
      * @param comment The comment to be entered.
      */
     protected void setComment(String comment)
@@ -45,11 +47,10 @@ public abstract class Item
         return comment;
     }
 
-
     /**
-     * Print details of this item to the text terminal.
+     * @return details of this item.
      */
-    
+
     public String toString() {
         return title + System.lineSeparator() + "Total duration: "
         + playingTime + " minutes";  
