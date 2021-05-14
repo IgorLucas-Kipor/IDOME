@@ -211,6 +211,7 @@ public class Viewer
 
     private void importFile() {
         String path = inputArea.getText();
+        outputArea.setText(null);
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             String line = br.readLine();
             while(line != null) {
@@ -294,7 +295,7 @@ public class Viewer
                     Integer.parseInt(fields[2]), Double.parseDouble(fields[4]));
             database.addItem(item);
         } else {
-            outputArea.setText(repeatedTitles.toString());
+            outputArea.append(repeatedTitles.toString());
         }
     }
 
@@ -308,19 +309,21 @@ public class Viewer
                     Integer.parseInt(fields[2]), Integer.parseInt(fields[4]));
             database.addItem(item);
         } else {
-            outputArea.setText(repeatedTitles.toString());
+            outputArea.append(repeatedTitles.toString());
         }
     }
 
     private Boolean verifyTitle(String fields[], StringBuilder titles) {
         Boolean titleExists = false;
+        titles.append(System.lineSeparator());
         for (Item i : database.getItems()) {
             if (i.getTitle().toLowerCase().equals(fields[1].toLowerCase())) {
                 titleExists = true;
                 titles.append(fields[1] + " - ");
             }
         }
-        titles.append("already exists.");
+        titles.append("already exists.")
+        .append(System.lineSeparator());
         return titleExists;
     }
 
@@ -333,7 +336,7 @@ public class Viewer
                     Integer.parseInt(fields[2]), Integer.parseInt(fields[4]));
             database.addItem(item);
         } else {
-            outputArea.setText(repeatedTitles.toString());
+            outputArea.append(repeatedTitles.toString());
         }
     }
 
