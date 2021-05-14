@@ -51,4 +51,8 @@ public class Database
         }
         return print.toString();
     }
+    
+    public void removeItem(Item theItem) {
+        items.remove(theItem);  
+    }
 }

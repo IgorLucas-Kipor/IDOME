@@ -76,7 +76,9 @@ public class Viewer
             "Again, no space between the values, separating each value with a "+
             "','." + System.lineSeparator() + "If you want to save a report "+
             "of the current list, please write the full path where you want to "+
-            "save the file, including the saved filed desired name and extension.");
+            "save the file, including the saved filed desired name and extension."
+            + System.lineSeparator() + "If you want to remove a media from the "
+            +"list, insert only his name here, with no other character.");
 
         //definindo características das áreas de input e output
         outputArea.setFont(new Font("Serif", Font.PLAIN, 12));
@@ -126,6 +128,8 @@ public class Viewer
         JButton saveFile = new JButton("Salvar lista");
 
         JButton addComment = new JButton("Adicionar comentário");
+        
+        JButton removeItem = new JButton("Remover mídia");
 
         //adicionando os eventos aos botões
         listItem.addActionListener(new ActionListener() {
@@ -147,6 +151,10 @@ public class Viewer
         addComment.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) { addComment(); }
             });
+            
+        removeItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) { removeItem(); }
+        });
 
         // Alinhando os componentes
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -157,7 +165,8 @@ public class Viewer
         addComment.setAlignmentX(Component.CENTER_ALIGNMENT);
         importFile.setAlignmentX(Component.CENTER_ALIGNMENT);
         saveFile.setAlignmentX(Component.CENTER_ALIGNMENT);
-
+        removeItem.setAlignmentX(Component.CENTER_ALIGNMENT);
+        
         // Adicionando elementos ao painel
         panel.add(label);
         panel.add(Box.createVerticalStrut(10));
@@ -174,6 +183,8 @@ public class Viewer
         panel.add(importFile);
         panel.add(Box.createVerticalStrut(5));
         panel.add(saveFile);
+        panel.add(Box.createVerticalStrut(5));
+        panel.add(removeItem);
         panel.add(Box.createVerticalStrut(5));
         
         return panel;
@@ -233,6 +244,7 @@ public class Viewer
             String list = database.list();
             print.append(list);
             bw.write(print.toString());
+            outputArea.setText("Save completed!");
         } catch (IOException e) {
             outputArea.setText("Error: " + e.getMessage());   
         }
@@ -250,6 +262,24 @@ public class Viewer
         }
         if (foundItem == false) {
             outputArea.setText("Item not in the list, please try again.");   
+        } else {
+            outputArea.setText("Comment set.");
+        }
+    }
+    
+    private void removeItem() {
+        String toRemove = inputArea.getText();
+        Boolean itemRemoved = false;
+        for (Item i : database.getItems()) {
+            if (i.getTitle().toLowerCase().equals(toRemove.toLowerCase())) {
+                database.removeItem(i); 
+                itemRemoved = true;
+            }
+        }
+        if (itemRemoved == false) {
+            outputArea.setText("No such item was found.");   
+        } else {
+            outputArea.setText("Media removed.");   
         }
     }
 
