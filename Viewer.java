@@ -128,7 +128,7 @@ public class Viewer
         JButton saveFile = new JButton("Salvar lista");
 
         JButton addComment = new JButton("Adicionar comentário");
-        
+
         JButton removeItem = new JButton("Remover mídia");
 
         //adicionando os eventos aos botões
@@ -151,10 +151,10 @@ public class Viewer
         addComment.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) { addComment(); }
             });
-            
+
         removeItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) { removeItem(); }
-        });
+                public void actionPerformed(ActionEvent e) { removeItem(); }
+            });
 
         // Alinhando os componentes
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -166,7 +166,7 @@ public class Viewer
         importFile.setAlignmentX(Component.CENTER_ALIGNMENT);
         saveFile.setAlignmentX(Component.CENTER_ALIGNMENT);
         removeItem.setAlignmentX(Component.CENTER_ALIGNMENT);
-        
+
         // Adicionando elementos ao painel
         panel.add(label);
         panel.add(Box.createVerticalStrut(10));
@@ -186,7 +186,7 @@ public class Viewer
         panel.add(Box.createVerticalStrut(5));
         panel.add(removeItem);
         panel.add(Box.createVerticalStrut(5));
-        
+
         return panel;
     }
 
@@ -266,7 +266,7 @@ public class Viewer
             outputArea.setText("Comment set.");
         }
     }
-    
+
     private void removeItem() {
         String toRemove = inputArea.getText();
         Boolean itemRemoved = false;
@@ -284,21 +284,57 @@ public class Viewer
     }
 
     private void addMovie(String fields[]) {
-        Movie item = new Movie(fields[1], fields[3],
-                Integer.parseInt(fields[2]), Double.parseDouble(fields[4]));
-        database.addItem(item);
+
+        StringBuilder repeatedTitles = new StringBuilder();
+
+        Boolean titleExists = verifyTitle(fields, repeatedTitles);
+
+        if (titleExists == false) {
+            Movie item = new Movie(fields[1], fields[3],
+                    Integer.parseInt(fields[2]), Double.parseDouble(fields[4]));
+            database.addItem(item);
+        } else {
+            outputArea.setText(repeatedTitles.toString());
+        }
     }
 
     private void addTvSeries(String fields[]) {
-        TvSeries item = new TvSeries(fields[1], fields[3],
-                Integer.parseInt(fields[2]), Integer.parseInt(fields[4]));
-        database.addItem(item);
+        StringBuilder repeatedTitles = new StringBuilder();
+
+        Boolean titleExists = verifyTitle(fields, repeatedTitles);
+
+        if (titleExists == false) {
+            TvSeries item = new TvSeries(fields[1], fields[3],
+                    Integer.parseInt(fields[2]), Integer.parseInt(fields[4]));
+            database.addItem(item);
+        } else {
+            outputArea.setText(repeatedTitles.toString());
+        }
+    }
+
+    private Boolean verifyTitle(String fields[], StringBuilder titles) {
+        Boolean titleExists = false;
+        for (Item i : database.getItems()) {
+            if (i.getTitle().toLowerCase().equals(fields[1].toLowerCase())) {
+                titleExists = true;
+                titles.append(fields[1] + " - ");
+            }
+        }
+        titles.append("already exists.");
+        return titleExists;
     }
 
     private void addAudioMedia(String fields[]) {
-        AudioMedia item = new AudioMedia(fields[1], fields[3],
-                Integer.parseInt(fields[2]), Integer.parseInt(fields[4]));
-        database.addItem(item);
+        StringBuilder repeatedTitles = new StringBuilder();
+
+        Boolean titleExists = verifyTitle(fields, repeatedTitles);
+        if (titleExists == false) {
+            AudioMedia item = new AudioMedia(fields[1], fields[3],
+                    Integer.parseInt(fields[2]), Integer.parseInt(fields[4]));
+            database.addItem(item);
+        } else {
+            outputArea.setText(repeatedTitles.toString());
+        }
     }
 
 }
