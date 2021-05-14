@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 
 /**
  * The database class provides a facility to store audio and media files.
@@ -16,7 +17,7 @@ public class Database
     /**
      * Construct an empty Database.
      */
-    public Database()
+    protected Database()
     {
         items = new ArrayList<Item>();
     }
@@ -24,7 +25,7 @@ public class Database
     /**
      * @return the list of added items.
      */
-    public ArrayList<Item> getItems() {
+    protected ArrayList<Item> getItems() {
         return items;   
     }
 
@@ -32,7 +33,7 @@ public class Database
      * Add an item to the database.
      * @param theItem The item to be added.
      */
-    public void addItem(Item theItem)
+    protected void addItem(Item theItem)
     {
         items.add(theItem);
     }
@@ -41,14 +42,18 @@ public class Database
      * Removes a item from the database.
      * @params theItem The item to be removed.
      */
-    public void removeItem(Item theItem) {
-        items.remove(theItem);  
+    protected void removeItem(Item theItem) {
+        try {
+            items.remove(theItem);
+        }catch (ConcurrentModificationException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
      * @return a list of all added items in string format.
      */
-    public String list()
+    protected String list()
     {
         StringBuilder print = new StringBuilder();
         for(Item item : items)

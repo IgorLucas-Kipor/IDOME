@@ -17,7 +17,7 @@ public class AudioMedia extends Item
      * @param tracks The number of tracks on the Audio Media.
      * @param time The playing time of the Audio Media.
      */
-    public AudioMedia(String theTitle, String theArtist, int time, int tracks)
+    protected AudioMedia(String theTitle, String theArtist, int time, int tracks)
     {
         super(theTitle, time);
         artist = theArtist;
@@ -27,7 +27,7 @@ public class AudioMedia extends Item
     /**
      * @return The artist for this Audio Media.
      */
-    public String getArtist()
+    protected String getArtist()
     {
         return artist;
     }
@@ -35,7 +35,7 @@ public class AudioMedia extends Item
     /**
      * @return The number of tracks on this Audio Media.
      */
-    public int getNumberOfTracks()
+    protected int getNumberOfTracks()
     {
         return numberOfTracks;
     }

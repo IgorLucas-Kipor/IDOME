@@ -22,7 +22,7 @@ public class Viewer
     private JTextArea inputArea;
 
     //---------------------------------Main Methods---------------------------
-    
+
     /**
      * Create an Viewer with an instance of database and shows it on screen.
      */
@@ -196,7 +196,7 @@ public class Viewer
 
         return panel;
     }
-    
+
     //--------------------------------Action Event Methods--------------------
 
     /**
@@ -312,13 +312,15 @@ public class Viewer
      */
     private void removeItem() {
         String toRemove = inputArea.getText();
+        Item toBeRemoved = null;
         Boolean itemRemoved = false;
         for (Item i : database.getItems()) {
             if (i.getTitle().toLowerCase().equals(toRemove.toLowerCase())) {
-                database.removeItem(i); 
+                toBeRemoved = i;
                 itemRemoved = true;
             }
         }
+        database.removeItem(toBeRemoved); 
         if (itemRemoved == false) {
             outputArea.setText("No such item was found.");   
         } else {

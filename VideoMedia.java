@@ -15,7 +15,7 @@ public abstract class VideoMedia extends Item
      * @param theDirector The director of this Video Media.
      * @param time The running time of the main feature.
      */
-    public VideoMedia(String theTitle, String theDirector, int time)
+    protected VideoMedia(String theTitle, String theDirector, int time)
     {
         super(theTitle, time);
         director = theDirector;
@@ -24,7 +24,7 @@ public abstract class VideoMedia extends Item
     /**
      * @return The director for this Video Media.
      */
-    public String getDirector()
+    protected String getDirector()
     {
         return director;
     }

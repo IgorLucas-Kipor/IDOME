@@ -17,7 +17,7 @@ public class Movie extends VideoMedia
      * @param time The running time of this movie.
      * @param boxOffice The amount of money this movie made in box office.
      */
-    public Movie(String theTitle, String theDirector, int time, double boxOffice)
+    protected Movie(String theTitle, String theDirector, int time, double boxOffice)
     {
         super(theTitle, theDirector, time);
         this.boxOffice = boxOffice;
@@ -26,7 +26,7 @@ public class Movie extends VideoMedia
     /**
      * @return the movie's amount made in box office.
      */
-    public double getBoxOffice()
+    protected double getBoxOffice()
     {
         return boxOffice;
     }

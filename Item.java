@@ -16,7 +16,7 @@ public abstract class Item
      * @param theTitle The title of this item.
      * @param time The running time of this item.
      */
-    public Item(String theTitle, int time)
+    protected Item(String theTitle, int time)
     {
         title = theTitle;
         playingTime = time;
@@ -26,7 +26,7 @@ public abstract class Item
     /**
      * @return the item title.
      */
-    public String getTitle() {
+    protected String getTitle() {
         return title;   
     }
 

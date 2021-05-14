@@ -17,7 +17,7 @@ public class TvSeries extends VideoMedia
      * @param time The running time of this tv series.
      * @param seasons The number of seasons this tv series has.
      */
-    public TvSeries(String theTitle, String theDirector, int time, int seasons)
+    protected TvSeries(String theTitle, String theDirector, int time, int seasons)
     {
         super(theTitle, theDirector, time);
         numberOfSeasons = seasons;
@@ -26,7 +26,7 @@ public class TvSeries extends VideoMedia
     /**
      * @return the number of seasons this tv series has.
      */
-    public int getNumberOfSeasons()
+    protected int getNumberOfSeasons()
     {
         return numberOfSeasons;
     }
