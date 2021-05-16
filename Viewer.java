@@ -38,6 +38,8 @@ public class Viewer
     private void makeFrame()
     {
         frame = new JFrame("ImageViewer");
+        
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         frame.setContentPane(createPanel());
 
@@ -71,21 +73,7 @@ public class Viewer
         outputArea = new JTextArea("This is the output area, where "+
             "the results of your commands will be shown.");
 
-        inputArea = new JTextArea("Use this area to input commands. " +
-            System.lineSeparator() + "To enter a new item with the GUI, " 
-            + "insert values in the following " +
-            "order: type,title,time,field1,field2. No spaces, separating each " +
-            "value with a ','." + System.lineSeparator() +
-            "If you want to insert items in the database through a .txt file" +
-            ", input it's complete path in the area, including the extension."+
-            System.lineSeparator() + "If you want to insert a comment, please "+
-            "enter values in the following order: itemTitle,comment. "+
-            "Again, no space between the values, separating each value with a "+
-            "','." + System.lineSeparator() + "If you want to save a report "+
-            "of the current list, please write the full path where you want to "+
-            "save the file, including the saved filed desired name and extension."
-            + System.lineSeparator() + "If you want to remove a media from the "
-            +"list, insert only his name here, with no other character.");
+        inputArea = new JTextArea(promptText());
 
         //definindo características das áreas de input e output
         outputArea.setFont(new Font("Serif", Font.PLAIN, 12));
@@ -204,7 +192,13 @@ public class Viewer
      */
     private void list() {
         String text = database.list();
-        outputArea.setText(text);
+        if (text.length() > 0) {
+            outputArea.setText(text);
+        } else {
+            outputArea.setText("There are no items in the list.");
+        }
+
+        inputArea.setText(promptText());
     }
 
     /**
@@ -229,6 +223,7 @@ public class Viewer
         } else {
             outputArea.setText("Invalid item, please try again.");   
         }
+        inputArea.setText(promptText());
     }
 
     /**
@@ -254,10 +249,11 @@ public class Viewer
                 }
                 line = br.readLine();
             }
+            outputArea.setText("Import Successful.");
         } catch (IOException e) {
             outputArea.setText("Error: " + e.getMessage());   
         }
-
+        inputArea.setText(promptText());
     }
 
     /**
@@ -278,6 +274,7 @@ public class Viewer
             print.append(list);
             bw.write(print.toString());
             outputArea.setText("Save completed!");
+            inputArea.setText(promptText());
         } catch (IOException e) {
             outputArea.setText("Error: " + e.getMessage());   
         }
@@ -303,6 +300,7 @@ public class Viewer
         } else {
             outputArea.setText("Comment set.");
         }
+        inputArea.setText(promptText());
     }
 
     /**
@@ -326,6 +324,7 @@ public class Viewer
         } else {
             outputArea.setText("Media removed.");   
         }
+        inputArea.setText(promptText());
     }
 
     //-------------------------------Support Methods-------------------------
@@ -405,6 +404,32 @@ public class Viewer
         titles.append("already exists.")
         .append(System.lineSeparator());
         return titleExists;
+    }
+
+    private String promptText() {
+        StringBuilder message = new StringBuilder();
+        message.append("Use this area to input commands.")
+        .append(System.lineSeparator())
+        .append("To enter a new item with the GUI, ")
+        .append("insert values in the following order: ")
+        .append("type,title,time,field1,field2. No spaces, separating each ")
+        .append("value with a ','.")
+        .append(System.lineSeparator())
+        .append("If you want to insert items in the database through a .txt file")
+        .append(", input it's complete path in the area, including the extension.")
+        .append(System.lineSeparator())
+        .append("If you want to insert a comment, please ")
+        .append("enter values in the following order: itemTitle,comment. ")
+        .append("Again, no space between the values, separating each value with a ")
+        .append("','.")
+        .append(System.lineSeparator())
+        .append("If you want to save a report ")
+        .append( "of the current list, please write the full path where you want to ")
+        .append("save the file, including the saved filed desired name and extension.")
+        .append(System.lineSeparator())
+        .append("If you want to remove a media from the ")
+        .append("list, insert only his name here, with no other character.");
+        return message.toString();
     }
 
 }
